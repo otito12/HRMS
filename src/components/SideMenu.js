@@ -32,18 +32,20 @@ const style= {
 };
 
 const useStyles = makeStyles(theme =>({
-
-
+    root:{
+        backgroundColor: '#253053'
+    }
 }));
 
 const drawerWidth = 240;
+
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
   }));
 
 const SideMenu = (props) => {
@@ -61,6 +63,7 @@ const SideMenu = (props) => {
                 '& .MuiDrawer-paper': {
                     width: width,
                     boxSizing: 'border-box',
+                    backgroundColor: '#253053',
                 },
                 }}
                 variant="persistent"
@@ -68,11 +71,21 @@ const SideMenu = (props) => {
                 open={openState}
             >
                 <DrawerHeader>
-                    <GroupWorkRounded
-                    fontSize='large' 
-                    />
-                    GHMS
-                    <IconButton onClick={closeSideMenu}>
+                    <div 
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center'                    
+                    }}>
+                        <GroupWorkRounded
+                        fontSize='large' 
+                        style={{color:'white'}}
+                        />
+                        <Typography
+                        sx={{color: 'white', ml:2}}>
+                        GHMS</Typography>
+                    </div>
+                    <IconButton onClick={closeSideMenu}
+                    style={{color:'white'}}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
                 </DrawerHeader>
@@ -80,10 +93,14 @@ const SideMenu = (props) => {
                 <List>
                 {['Inbox', 'Starred'].map((text, index) => (
                     <ListItem button key={text}>
-                    <ListItemIcon>
+                    <ListItemIcon
+                        sx={{color: 'white'}}
+                    >
                         {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                     </ListItemIcon>
-                    <ListItemText primary={text} />
+                    <ListItemText 
+                    sx={{color: 'white'}}
+                    primary={text} />
                     </ListItem>
                 ))}
                 </List>
@@ -91,10 +108,13 @@ const SideMenu = (props) => {
                 <List>
                 {['All mail', 'Trash', 'Spam'].map((text, index) => (
                     <ListItem button key={text}>
-                    <ListItemIcon>
+                    <ListItemIcon
+                    sx={{color: 'white'}}>
                         {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                     </ListItemIcon>
-                    <ListItemText primary={text} />
+                    <ListItemText 
+                    sx={{color: 'white'}}
+                    primary={text} />
                     </ListItem>
                 ))}
                 </List>
