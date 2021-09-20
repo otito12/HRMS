@@ -1,4 +1,5 @@
 import { Button, makeStyles } from '@material-ui/core';
+import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 
 const useStyles = makeStyles(theme => ({
@@ -11,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function LoginButton(props) {
-    
+    const {loginWithRedirect} = useAuth0();
     const{text ,size, color,variant,onClick, ...other } = props
     const classes = useStyles();
     return (
@@ -19,7 +20,7 @@ export default function LoginButton(props) {
         size = {size|| "large"}
         color= {color || "primary"}
         variant= {variant || "contained"}
-        onClick = {onClick}
+        onClick = {()=> loginWithRedirect()}
         {...other}
         classes={{root:classes.root,label:classes.label}}>
             {text}

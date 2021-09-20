@@ -5,6 +5,7 @@ import CheckInput from './CheckInput';
 import DatePicker from './DatePicker';
 import InputButton from './InputButton';
 import ActionButton from './ActionButton';
+import AccountMenu from './AccountMenu';
 
 const Controls = {
     TextFieldInput,
@@ -13,7 +14,8 @@ const Controls = {
     CheckInput,
     DatePicker,
     InputButton,
-    ActionButton
+    ActionButton,
+    AccountMenu
 }
 
 export default Controls

@@ -2,7 +2,6 @@ import { makeStyles, Paper, Typography } from '@material-ui/core';
 import { GroupWorkRounded } from '@material-ui/icons';
 import React from 'react';
 import LoginButton from '../../components/LoginButton';
-import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
     container:{
@@ -57,18 +56,13 @@ export default function Login() {
                     Please login or create an account
                 </Typography>
                 <div style={{display:'flex', justifyContent:'center'}}>
-                    <Link to="/Landing" className={classes.link}>
-                        <LoginButton
+                    <LoginButton
                         color="default" 
                         text="Login"
                         />
-                    </Link>
-                    <Link to="/Landing" className={classes.link}>
                         <LoginButton 
                         text="SignUp"
                         />
-                    </Link>
-                    
                 </div>
             </Paper>
         </div>

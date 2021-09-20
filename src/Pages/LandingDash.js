@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SideMenu from '../components/SideMenu';
 import Header from '../components/Header';
 import { CssBaseline, makeStyles } from '@material-ui/core';
 import {createTheme, ThemeProvider} from '@material-ui/core/styles'
 import Employees from './Employee/Employees';
+import { styled, useTheme } from '@mui/material/styles';
 
 const theme = createTheme({
     palette:{
@@ -27,21 +28,57 @@ const theme = createTheme({
       }
     }
   });
-  
+  const sideMenuWidth = 240;
+
   const useStyles = makeStyles({
     appMain:{
-      paddingLeft: '320px',
-      width: '100%'
+      paddingLeft: sideMenuWidth,
+      width: '100%',
     },
   });
+  
+  
+
+  // const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
+  //   ({ theme, open }) => ({
+  //     flexGrow: 1,
+  //     padding: theme.spacing(3),
+  //     transition: theme.transitions.create('margin', {
+  //       easing: theme.transitions.easing.sharp,
+  //       duration: theme.transitions.duration.leavingScreen,
+  //     }),
+  //     marginLeft: `-${drawerWidth}px`,
+  //     ...(open && {
+  //       transition: theme.transitions.create('margin', {
+  //         easing: theme.transitions.easing.easeOut,
+  //         duration: theme.transitions.duration.enteringScreen,
+  //       }),
+  //       marginLeft: 0,
+  //     }),
+  //   }),
+  // );
+  
 
 export default function LandingDash() {
     const classes = useStyles();
+    const [openSideMenu, setOpenSideMenu] = useState(true);
+
+    const handleDrawerOpen = () => {
+      openSideMenu? setOpenSideMenu(false):setOpenSideMenu(true);
+    };
+
     return (
         <ThemeProvider theme={theme}>
-            <SideMenu/>
-            <div className={classes.appMain}>
-                <Header/>
+            <SideMenu
+            openState={openSideMenu}
+            closeSideMenu={handleDrawerOpen}
+            width={sideMenuWidth}/>
+            <div className={classes.appMain}
+              style={{paddingLeft: openSideMenu?sideMenuWidth:0}}
+            >
+                <Header
+                openSideMenu={handleDrawerOpen}
+                />
                 <Employees/>
             </div>
             <CssBaseline/>
