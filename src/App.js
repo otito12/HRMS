@@ -1,56 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
-import SideMenu from './components/SideMenu';
-import Header from './components/Header';
-import { CssBaseline, makeStyles } from '@material-ui/core';
-import {createTheme, ThemeProvider} from '@material-ui/core/styles'
-import Employees from './Pages/Employee/Employees';
+import LandingDash from './Pages/LandingDash';
+import Login from './Pages/Login/Login';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-const theme = createTheme({
-  palette:{
-    primary:{
-      main:"#333996",
-      light: "#3c44b126"
-    },
-    secondary:{
-      main:"#f83245",
-      light: "#f8324526"
-    }
-  },
-  background:{
-    default:"#f4f5fd"
-  },
-  overrides:{
-    MuiAppBar:{
-      root:{
-        transform:'translateZ(0)'
-      }
-    }
-  }
-});
 
-const useStyles = makeStyles({
-  appMain:{
-    paddingLeft: '320px',
-    width: '100%'
-  },
-});
 
 function App() {
-
-  const classes = useStyles();
   return (
-    <>
-    <ThemeProvider theme={theme}>
-      <SideMenu/>
-        <div className={classes.appMain}>
-          <Header/>
-          <Employees/>
-        </div>
-        <CssBaseline/>
-    </ThemeProvider>
-      
-    </>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Login}/>
+        <Route path="/Landing" exact component={LandingDash}/>
+      </Switch>
+    </Router>
   );
 }
 
