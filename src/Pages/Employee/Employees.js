@@ -107,8 +107,8 @@ export default function Employees() {
     return (
         <>
         <PageHeader
-          title = "New Employee"
-          subTitle = "Form Design with validation"
+          title = "Manage Employee's"
+          subTitle = "Manage Employee's in your "
           icon = {<PeopleIcon fontSize="Large"/>}
           />
           <Paper className = {classes.pageContent}>

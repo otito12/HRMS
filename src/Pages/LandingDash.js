@@ -28,7 +28,7 @@ const theme = createTheme({
       }
     }
   });
-  const sideMenuWidth = 240;
+  const sideMenuWidth = 280;
 
   const useStyles = makeStyles({
     appMain:{

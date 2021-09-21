@@ -91,7 +91,7 @@ const SideMenu = (props) => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                {['Inbox', 'Starred'].map((text, index) => (
+                {["Manage Employee's", 'Employee Messenger'].map((text, index) => (
                     <ListItem button key={text}>
                     <ListItemIcon
                         sx={{color: 'white'}}
@@ -103,21 +103,8 @@ const SideMenu = (props) => {
                     primary={text} />
                     </ListItem>
                 ))}
-                </List>
-                <Divider />
-                <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                    <ListItemIcon
-                    sx={{color: 'white'}}>
-                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon>
-                    <ListItemText 
-                    sx={{color: 'white'}}
-                    primary={text} />
-                    </ListItem>
-                ))}
-                </List>
+                </List>      
+                          
             </Drawer>
 
         </div>
