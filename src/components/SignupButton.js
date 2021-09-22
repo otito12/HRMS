@@ -11,11 +11,6 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const loginToApp = (auth0Login) => {
-    auth0Login();
-    
-}
-
 export default function LoginButton(props) {
     const {loginWithRedirect} = useAuth0();
     const{text ,size, color,variant,onClick, ...other } = props
@@ -25,7 +20,9 @@ export default function LoginButton(props) {
         size = {size|| "large"}
         color= {color || "primary"}
         variant= {variant || "contained"}
-        onClick = {()=> loginToApp(loginWithRedirect)}
+        onClick = {()=> loginWithRedirect({
+            screen_hint: 'signup',
+        })}
         {...other}
         classes={{root:classes.root,label:classes.label}}>
             {text}

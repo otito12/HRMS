@@ -5,6 +5,9 @@ import { CssBaseline, makeStyles } from '@material-ui/core';
 import {createTheme, ThemeProvider} from '@material-ui/core/styles'
 import Employees from './Employee/Employees';
 import { styled, useTheme } from '@mui/material/styles';
+import Profile from './Profile/Profile';
+import { BrowserRouter as Router, Switch, useRouteMatch, Link } from 'react-router-dom';
+
 
 const theme = createTheme({
     palette:{
@@ -36,38 +39,18 @@ const theme = createTheme({
       width: '100%',
     },
   });
-  
-  
-
-  // const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
-  //   ({ theme, open }) => ({
-  //     flexGrow: 1,
-  //     padding: theme.spacing(3),
-  //     transition: theme.transitions.create('margin', {
-  //       easing: theme.transitions.easing.sharp,
-  //       duration: theme.transitions.duration.leavingScreen,
-  //     }),
-  //     marginLeft: `-${drawerWidth}px`,
-  //     ...(open && {
-  //       transition: theme.transitions.create('margin', {
-  //         easing: theme.transitions.easing.easeOut,
-  //         duration: theme.transitions.duration.enteringScreen,
-  //       }),
-  //       marginLeft: 0,
-  //     }),
-  //   }),
-  // );
-  
 
 export default function LandingDash() {
+    
+
     const classes = useStyles();
     const [openSideMenu, setOpenSideMenu] = useState(true);
-
     const handleDrawerOpen = () => {
       openSideMenu? setOpenSideMenu(false):setOpenSideMenu(true);
     };
-
     return (
+      <Router>
+        <Switch>
         <ThemeProvider theme={theme}>
             <SideMenu
             openState={openSideMenu}
@@ -80,8 +63,18 @@ export default function LandingDash() {
                 openSideMenu={handleDrawerOpen}
                 />
                 <Employees/>
+                {/* <Link to={`${url}/Directory`}>As</Link> */}
+                <Profile/>
             </div>
             <CssBaseline/>
-      </ThemeProvider>
+        </ThemeProvider>
+        </Switch>
+      </Router>
     )
 }
+
+
+      
+        
+      
+    

@@ -2,6 +2,8 @@ import { makeStyles, Paper, Typography } from '@material-ui/core';
 import { GroupWorkRounded } from '@material-ui/icons';
 import React from 'react';
 import LoginButton from '../../components/LoginButton';
+import SignupButton from '../../components/SignupButton';
+import {useAuth0} from '@auth0/auth0-react';
 
 const useStyles = makeStyles(theme => ({
     container:{
@@ -30,6 +32,7 @@ const useStyles = makeStyles(theme => ({
 export default function Login() {
 
     const classes = useStyles();
+    const {user, isAuthenticated} = useAuth0();
 
     return (
         <div className={classes.container}>
@@ -56,13 +59,14 @@ export default function Login() {
                     Please login or create an account
                 </Typography>
                 <div style={{display:'flex', justifyContent:'center'}}>
-                    <LoginButton
-                        color="default" 
-                        text="Login"
-                        />
-                        <LoginButton 
-                        text="SignUp"
-                        />
+                    {isAuthenticated? 
+                        <div>
+                            {JSON.stringify(user)}
+                        </div>
+                    :<LoginButton
+                    color="default" 
+                    text="Login"
+                    /> }
                 </div>
             </Paper>
         </div>

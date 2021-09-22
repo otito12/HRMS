@@ -14,7 +14,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Notification from '../../components/Notification';
 import ConfirmDialog from '../../components/ConfirmDialog';
 
-
 const useStyles = makeStyles(theme => ({
     pageContent:{
         margin: theme.spacing(5),
@@ -41,7 +40,6 @@ const headCells = [
 
 
 export default function Employees() {
-
     const classes=useStyles();
     const [recordForEdit, setRecordForEdit] = useState(null);
     const [records, setRecords] = useState(employeeService.getAllEmployees());
