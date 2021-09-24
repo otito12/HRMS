@@ -6,7 +6,7 @@ import {createTheme, ThemeProvider} from '@material-ui/core/styles'
 import Employees from './Employee/Employees';
 import { styled, useTheme } from '@mui/material/styles';
 import Profile from './Profile/Profile';
-import { BrowserRouter as Router, Switch, useRouteMatch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useRouteMatch, Link } from 'react-router-dom';
 
 
 const theme = createTheme({
@@ -42,34 +42,36 @@ const theme = createTheme({
 
 export default function LandingDash() {
     
-
+    const {path, url} = useRouteMatch();
     const classes = useStyles();
     const [openSideMenu, setOpenSideMenu] = useState(true);
     const handleDrawerOpen = () => {
       openSideMenu? setOpenSideMenu(false):setOpenSideMenu(true);
     };
     return (
-      <Router>
-        <Switch>
-        <ThemeProvider theme={theme}>
-            <SideMenu
-            openState={openSideMenu}
-            closeSideMenu={handleDrawerOpen}
-            width={sideMenuWidth}/>
-            <div className={classes.appMain}
-              style={{paddingLeft: openSideMenu?sideMenuWidth:0}}
-            >
-                <Header
-                openSideMenu={handleDrawerOpen}
-                />
-                <Employees/>
-                {/* <Link to={`${url}/Directory`}>As</Link> */}
-                <Profile/>
-            </div>
-            <CssBaseline/>
-        </ThemeProvider>
-        </Switch>
-      </Router>
+        
+          <ThemeProvider theme={theme}>
+              <SideMenu
+              openState={openSideMenu}
+              closeSideMenu={handleDrawerOpen}
+              width={sideMenuWidth}/>
+              <div className={classes.appMain}
+                style={{paddingLeft: openSideMenu?sideMenuWidth:0}}
+              >
+                  <Header
+                  openSideMenu={handleDrawerOpen}
+                  />
+                  <Link to={`${url}`}>We</Link>
+                  <br/>
+                  <Link to={`${url}`}>Proceed</Link>
+                  <Switch>
+                    <Route path={`${path}/Directory`} component={Employees}/> 
+                    <Profile/>
+                  </Switch>
+              </div>
+              <CssBaseline/>
+          </ThemeProvider>
+        
     )
 }
 

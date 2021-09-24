@@ -22,7 +22,7 @@ import { GroupWorkRounded } from '@material-ui/icons';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WorkIcon from '@mui/icons-material/Work';
-import { BrowserRouter as Router, Switch, useRouteMatch, Link } from 'react-router-dom';
+import {useRouteMatch, Link } from 'react-router-dom';
 
 const style= {
     sideMenu: {
@@ -53,10 +53,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
 const SideMenu = (props) => {
-    const {url, path} = useRouteMatch();
+
     const {classes, width, openState,closeSideMenu, ...other} = props;
     const theme = useTheme();
     let classea = useStyles();
+    const {path, url} = useRouteMatch();
+
     return (
         
         <div className={classes.sideMenu}
@@ -108,28 +110,33 @@ const SideMenu = (props) => {
                                 primary="Directory" />
                         </ListItem>
                     </Link>
-                    <ListItem button key="Messenger">
-                        <ListItemIcon
-                            sx={{color: 'white'}}
-                        >
-                            <TelegramIcon/>
-                        </ListItemIcon>
-                        <ListItemText 
-                            sx={{color: 'white'}}
-                            primary="Messenger" />
-                    </ListItem>
-                    <ListItem button key="Staffing">
-                        <ListItemIcon
-                            sx={{color: 'white'}}
-                        >
-                            <WorkIcon/>
-                        </ListItemIcon>
-                        <ListItemText 
-                            sx={{color: 'white'}}
-                            primary="Staffing" />
-                    </ListItem>
-                </List>      
-                          
+                    <Link to={`${url}`}>
+                        <ListItem button key="Messenger">
+                            <ListItemIcon
+                                sx={{color: 'white'}}
+                            >
+                                <TelegramIcon/>
+                            </ListItemIcon>
+                            <ListItemText 
+                                sx={{color: 'white'}}
+                                primary="Messenger" />
+                        </ListItem>
+                    </Link>
+                    <Link 
+                    style={{ textDecoration: 'none' }}
+                    to={`${url}`}>
+                        <ListItem button key="Staffing">
+                            <ListItemIcon
+                                sx={{color: 'white'}}
+                            >
+                                <WorkIcon/>
+                            </ListItemIcon>
+                            <ListItemText 
+                                sx={{color: 'white'}}
+                                primary="Staffing" />
+                        </ListItem>
+                    </Link>
+                </List>         
             </Drawer>
 
         </div>
