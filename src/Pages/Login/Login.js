@@ -4,6 +4,7 @@ import React from 'react';
 import LoginButton from '../../components/LoginButton';
 import SignupButton from '../../components/SignupButton';
 import {useAuth0} from '@auth0/auth0-react';
+import { Redirect } from 'react-router';
 
 const useStyles = makeStyles(theme => ({
     container:{
@@ -60,9 +61,7 @@ export default function Login() {
                 </Typography>
                 <div style={{display:'flex', justifyContent:'center'}}>
                     {isAuthenticated? 
-                        <div>
-                            {JSON.stringify(user)}
-                        </div>
+                        <Redirect to="/Landing"/>
                     :<LoginButton
                     color="default" 
                     text="Login"

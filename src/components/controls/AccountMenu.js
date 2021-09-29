@@ -11,9 +11,11 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import {useRouteMatch, Link } from 'react-router-dom';
 
 
 export default function AccountMenu(props) {
+    const {url,path} = useRouteMatch();
     const {logoutFunc, ... other} = props
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -64,9 +66,13 @@ export default function AccountMenu(props) {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
     >
+        <Link
+        style={{ textDecoration: 'none' }}
+        to={`${url}/Profile`}>
         <MenuItem>
         <Avatar color="secondary"/> My Account
         </MenuItem>
+        </Link>
         <Divider />
         <MenuItem>
         <ListItemIcon>

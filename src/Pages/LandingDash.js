@@ -4,8 +4,10 @@ import Header from '../components/Header';
 import { CssBaseline, makeStyles } from '@material-ui/core';
 import {createTheme, ThemeProvider} from '@material-ui/core/styles'
 import Employees from './Employee/Employees';
-import { styled, useTheme } from '@mui/material/styles';
+import EmployeeMessenger from './Messenger/EmployeeMessenger';
+import EmployeeStaffer from './Staffing/EmployeeStaffer';
 import Profile from './Profile/Profile';
+import { styled, useTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Switch, Route, useRouteMatch, Link } from 'react-router-dom';
 
 
@@ -27,6 +29,11 @@ const theme = createTheme({
       MuiAppBar:{
         root:{
           transform:'translateZ(0)'
+        }
+      },
+      MuiLink:{
+        root:{
+          textDecoration:'none'
         }
       }
     }
@@ -61,12 +68,12 @@ export default function LandingDash() {
                   <Header
                   openSideMenu={handleDrawerOpen}
                   />
-                  <Link to={`${url}`}>We</Link>
-                  <br/>
-                  <Link to={`${url}`}>Proceed</Link>
                   <Switch>
-                    <Route path={`${path}/Directory`} component={Employees}/> 
-                    <Profile/>
+                    <Route path={`${path}/`} exact component={Employees}/> 
+                    <Route path={`${path}/Directory`} component={Employees}/>
+                    <Route path={`${path}/Messenger`} component={EmployeeMessenger}/>
+                    <Route path={`${path}/Staffing`} component={EmployeeStaffer}/>
+                    <Route path={`${path}/Profile`} component={Profile}/>  
                   </Switch>
               </div>
               <CssBaseline/>

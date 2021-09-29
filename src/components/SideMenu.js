@@ -19,7 +19,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { GroupWorkRounded } from '@material-ui/icons';
-import ViewListIcon from '@mui/icons-material/ViewList';
+import PeopleIcon from '@material-ui/icons/People';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WorkIcon from '@mui/icons-material/Work';
 import {useRouteMatch, Link } from 'react-router-dom';
@@ -98,19 +98,23 @@ const SideMenu = (props) => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    <Link to={`${url}/Directory`}>
+                    <Link 
+                    style={{ textDecoration: 'none' }}
+                    to={`${url}/Directory`}>
                         <ListItem button key="Directory">
                             <ListItemIcon
                                 sx={{color: 'white'}}
                             >
-                                <ViewListIcon/>
+                                <PeopleIcon/>
                             </ListItemIcon>
                             <ListItemText 
                                 sx={{color: 'white'}}
                                 primary="Directory" />
                         </ListItem>
                     </Link>
-                    <Link to={`${url}`}>
+                    <Link 
+                    style={{ textDecoration: 'none' }}
+                    to={`${url}/Messenger`}>
                         <ListItem button key="Messenger">
                             <ListItemIcon
                                 sx={{color: 'white'}}
@@ -124,7 +128,7 @@ const SideMenu = (props) => {
                     </Link>
                     <Link 
                     style={{ textDecoration: 'none' }}
-                    to={`${url}`}>
+                    to={`${url}/Staffing`}>
                         <ListItem button key="Staffing">
                             <ListItemIcon
                                 sx={{color: 'white'}}

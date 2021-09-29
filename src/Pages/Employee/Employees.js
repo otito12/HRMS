@@ -105,8 +105,8 @@ export default function Employees() {
     return (
         <>
         <PageHeader
-          title = "Manage Employee's"
-          subTitle = "Manage Employee's in your "
+          title = "Employee Directory"
+          subTitle = "Manage Employee's in your organization"
           icon = {<PeopleIcon fontSize="Large"/>}
           />
           <Paper className = {classes.pageContent}>
