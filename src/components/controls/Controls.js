@@ -6,6 +6,8 @@ import DatePicker from './DatePicker';
 import InputButton from './InputButton';
 import ActionButton from './ActionButton';
 import AccountMenu from './AccountMenu';
+import SearchDrop from './SearchDrop';
+import AccordionDisplay from './AccordionDisplay';
 
 const Controls = {
     TextFieldInput,
@@ -15,7 +17,9 @@ const Controls = {
     DatePicker,
     InputButton,
     ActionButton,
-    AccountMenu
+    AccountMenu,
+    SearchDrop,
+    AccordionDisplay
 }
 
 export default Controls

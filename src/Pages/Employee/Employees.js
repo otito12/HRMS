@@ -9,7 +9,7 @@ import Controls from '../../components/controls/Controls';
 import { Search } from '@material-ui/icons';
 import AddIcon from '@material-ui/icons/Add';
 import Popup from '../../components/Popup';
-import EditIcon from '@material-ui/icons/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Notification from '../../components/Notification';
 import ConfirmDialog from '../../components/ConfirmDialog';
@@ -144,7 +144,7 @@ export default function Employees() {
                         fontSize="small"
                         onClick = {()=> openInPopUp(item)}
                         >
-                          <EditIcon/>
+                          <VisibilityIcon/>
                         </Controls.ActionButton>
                         <Controls.ActionButton
                         color = 'secondary'

@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function InputButton(props) {
     
-    const{text ,size, color,variant,onClick, ...other } = props
+    const{text ,children,size, color,variant,onClick, ...other } = props
     const classes = useStyles();
     return (
         <Button 
@@ -22,7 +22,7 @@ export default function InputButton(props) {
         onClick = {onClick}
         {...other}
         classes={{root:classes.root,label:classes.label}}>
-            {text}
+            {children}{text}
         </Button>
     )
 }

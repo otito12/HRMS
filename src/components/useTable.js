@@ -1,4 +1,4 @@
-import { makeStyles, Table, TableCell, TableHead, TablePagination, TableRow, TableSortLabel } from '@material-ui/core';
+import { makeStyles, Table, TableCell, TableContainer, TableHead, TablePagination, TableRow, TableSortLabel } from '@material-ui/core';
 import React, { useState } from 'react';
 
 const useStyles = makeStyles(theme=> ({
@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme=> ({
         '& thead th':{
             fontWeight: '600',
             color: theme.palette.primary.main,
-            backgroundColor: theme.palette.primary.light
+            backgroundColor: '#E2E3F3'
 
         },
         '& tbody td': {
@@ -25,16 +25,23 @@ export default function useTable(records,headCells, filterFn) {
 
     const classes = useStyles(); 
 
-    const pages = [2, 10, 25]
+    const pages = [5, 10, 25]
     const [page,setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(pages[page])
     const [order, setOrder] = useState();
     const [orderBy, setOrderBy] = useState();
     
     const TblContainer = props => (
-        <Table className = {classes.table}>
+        <div
+        style={{ height: '350px', overflow: 'auto' }}
+        >
+            <Table 
+            className = {classes.table} stickyHeader>
             {props.children}
-        </Table>
+             
+            </Table>
+        </div>
+        
     )
 
     const TblHead = props =>{

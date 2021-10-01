@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogTitle, makeStyles, Typography } from '@material-ui/core'
+import { Dialog, DialogActions, DialogContent, DialogTitle, makeStyles, Typography } from '@material-ui/core'
 import React from 'react';
 import Controls from '../components/controls/Controls';
 import CloseIcon from '@material-ui/icons/Close';
@@ -13,14 +13,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function Popup(props) {
     
-    const {title, children, openPopup, setOpenPopup} = props
+    const {title, children, openPopup, setOpenPopup, actions} = props
     const classes = useStyles();
 
     return (
         <Dialog open={openPopup} maxWidth="md" classes = {{paper: classes.dialogWrapper}}>
             <DialogTitle>
                 <div  style= {{display: 'flex'}}>
-                    <Typography variant="h6" component="div" style= {{flexGrow: 1}}>
+                    <Typography variant="h4" component="div" style= {{flexGrow: 1}}>
                         {title}
                     </Typography>
                     <Controls.ActionButton
@@ -34,6 +34,9 @@ export default function Popup(props) {
             <DialogContent dividers>
                 {children}
             </DialogContent>
+            <DialogActions dividers>
+                {actions}
+            </DialogActions>
         </Dialog>
     )
 }
