@@ -41,8 +41,8 @@ export default function EmployeeForm(props) {
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
-    if ("fullName" in fieldValues)
-      temp.fullName = fieldValues.fullName ? "" : "This field is required";
+    if ("firstName" in fieldValues)
+      temp.firstName = fieldValues.firstName ? "" : "This field is required";
     if ("email" in fieldValues)
       temp.email = /$^|.+@.+..+/.test(fieldValues.email)
         ? ""
@@ -96,11 +96,11 @@ export default function EmployeeForm(props) {
             <br />
             <Grid item xs={6}>
               <Controls.TextFieldInput
-                name="fullName"
-                label="Full Name"
-                value={values.fullName}
+                name="fisrtName"
+                label="First Name"
+                value={values.firstName}
                 onChange={handleInputChange}
-                error={errors.fullName}
+                error={errors.firstName}
               />
               <Controls.TextFieldInput
                 name="lastName"
